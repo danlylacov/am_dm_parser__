@@ -13,24 +13,24 @@ from asdf import create_accord
 token = '5159594918:AAGpVlavozfBPkTfqzNqvWwpoYTZNd_CFYE'
 bot = telebot.TeleBot(token)
 
-#db = sqlite3.connect('am_dm.sqlite', check_same_thread=False)
-#cur = db.cursor()
+db = sqlite3.connect('am_dm.sqlite', check_same_thread=False)
+cur = db.cursor()
 
 
 
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-   # text = cur.execute('SELECT id FROM users')
-   # users_ids = []
-    #for el in text:
-     #   users_ids.append(str(el[0]))
+    text = cur.execute('SELECT id FROM users')
+    users_ids = []
+    for el in text:
+        users_ids.append(str(el[0]))
 
-    #if str(message.chat.id) not in users_ids:
-     #   cur.execute('insert into USERS (id, user_name) values (?,?)', (message.chat.id, message.chat.username, ))
-     #   db.commit()
-    #else:
-       # print('ercer')
+    if str(message.chat.id) not in users_ids:
+        cur.execute('insert into USERS (id, user_name) values (?,?)', (message.chat.id, message.chat.username, ))
+        db.commit()
+    else:
+        print('ercer')
     keyboard = telebot.types.ReplyKeyboardMarkup(True)
     keyboard.row('Поиск по песне', 'Поиск по исполнителю')
     keyboard.add('О боте, поддержка')
