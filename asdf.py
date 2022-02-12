@@ -50,7 +50,7 @@ def create_accord(accord, name):
         draw.text((74,2),str(begin) ,font=ImageFont.truetype("arial.ttf", size=25),  fill='Black')
     draw.text((200, 300), str(name), font=ImageFont.truetype("arial.ttf", size=50), fill='Green')
 
-    im.save('1.png')
+    im.save('1.jpg')
 
 def crest(im, draw, x, y):
 
